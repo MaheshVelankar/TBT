@@ -47,8 +47,8 @@ int main(int argc, char *argv[])
 		//sprintf(str1,"cp -r %s%s%s %s","../resources/languages/",argv[1], "/syllable/il_parser_train.pl","bin/");	
 		//system(str1);
 		
-		sprintf(str1,"cp -r %s%s%s %s","../resources/languages/",argv[1], "/syllable/PhoneSet.txt","bin/");
-		system(str1);
+//		sprintf(str1,"cp -r %s%s%s %s","../resources/languages/",argv[1], "/syllable/PhoneSet.txt","bin/");
+//		system(str1);
 
 		sprintf(str1,"cp -r %s %s","../input/txt.done.data","etc/");
 		system(str1);
@@ -72,9 +72,12 @@ int main(int argc, char *argv[])
 
 		printf("Start building syllable level lab files................>>>>>>>>>\n\n\n");
 		
-		sprintf(str1,"cp -r %s %s","../resources/common/parser/*", "./");
-		system(str1);    //copy parser to current directory
-		system("make");
+////		sprintf(str1,"cp -r %s %s","../resources/common/parser/*", "./");
+////		system(str1);    //copy parser to current directory
+////		system("make");
+
+		sprintf(str1,"cp %s %s","../resources/common/parser/utfparser", "./");
+		system(str1);
 
 		strcpy(command,"festival -b festvox/build_clunits.scm '(build_prompts \"etc/txt.done.data\")'");   /* generate prompts*/
 
@@ -86,10 +89,12 @@ int main(int argc, char *argv[])
 
 		system("sort -u all_sys_unsorted > all_sys");		
 
-		sprintf(str1,"cp %s %s","../resources/common/syllable/generate_syl_dict.pl", "./");
+//		sprintf(str1,"cp %s %s","../resources/common/syllable/generate_syl_dict.pl", "./");
+		sprintf(str1,"cp %s %s","../resources/common/syllable/syldictgen", "./");
 		system(str1);
 		
-		system("perl generate_syl_dict.pl $PWD" );  // generate the SYLDICT (syldict)
+//		system("perl generate_syl_dict.pl $PWD" );  // generate the SYLDICT (syldict)
+		system("./syldictgen $PWD" );  // generate the SYLDICT (syldict)
 
 		return 0;
 }

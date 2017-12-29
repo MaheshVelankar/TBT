@@ -79,6 +79,11 @@
 (	q	 +	l	2	1	-	l	d	+ )
 (	mq	 +	l	2	1	-	l	d	+ )
 (	hq	 +	l	2	1	-	l	d	+ )
+
+(	cx	 +	l	2	1	-	l	d	+ )
+(	jhq	 +	l	2	1	-	l	d	+ )
+(	mw	 +	l	2	1	-	l	d	+ )
+
 (       SIL  - 0 - - - 0 0 - )  ;; slience ...
 
    ;; insert the phones here, see examples in 

@@ -46,8 +46,8 @@ int main(int argc, char *argv[])
 		 
 
 		//system("cp -r ../phoneme/Marathi_PhoneSet.txt bin/");
-		sprintf(str,"cp -r %s%s%s %s","../resources/languages/",argv[1],"/phoneme/PhoneSet.txt","bin/");
-		system(str);
+//		sprintf(str,"cp -r %s%s%s %s","../resources/languages/",argv[1],"/phoneme/PhoneSet.txt","bin/");
+//		system(str);
 
 		sprintf(str,"cp -r %s %s","../input/txt.done.data","etc/");
 		system(str);
@@ -71,9 +71,14 @@ int main(int argc, char *argv[])
 
 		system("cp -r phone_level_lab_phoneset.scm festvox/");
 		system("rm -rf phone_level_lab_phoneset.scm");
-		sprintf(str,"cp -r %s %s","../resources/common/parser/*", "./");
-		system(str);    //copy parser to current directory
-		system("make");
+
+/////		sprintf(str,"cp -r %s %s","../resources/common/parser/*", "./");
+/////		system(str);    //copy parser to current directory
+/////		system("make");
+
+		sprintf(str,"cp %s %s","../resources/common/parser/utfparser", "./");
+		system(str);
+
 		strcpy(command,"festival -b festvox/build_clunits.scm '(build_prompts \"etc/txt.done.data\")'");   /* generate prompts*/
 		printf("\n\n ****Building PHONE level LAB files ****\n\n");
 		system(command);

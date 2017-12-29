@@ -51,27 +51,29 @@ cd syllable_level_lab/
 gcc syllable_level_labs.c -o syllable_lab
 
 cd ..
-np=$(nproc)
-temp=$(expr "$np" / 2)
-np_phone=$(expr "$temp" - 1)
+####np=$(nproc)
+####temp=$(expr "$np" / 2)
+####np_phone=$(expr "$temp" - 1)
 cd phone_level_lab/
-taskset -c 0-$np_phone ./phone_lab $LNG &
+####taskset -c 0-$np_phone ./phone_lab $LNG &
+./phone_lab $LNG
 
 cd ..
-np_syl1=$(expr "$np" / 2)
-np_syl2=$(expr "$np" - 1)
+####np_syl1=$(expr "$np" / 2)
+####np_syl2=$(expr "$np" - 1)
 cd syllable_level_lab/
-taskset -c $np_syl1-$np_syl2 ./syllable_lab $LNG &
+####taskset -c $np_syl1-$np_syl2 ./syllable_lab $LNG &
+./syllable_lab $LNG
 
-phone_lab_id=$(pidof phone_lab)
-syllable_lab_id=$(pidof syllable_lab)
+####phone_lab_id=$(pidof phone_lab)
+####syllable_lab_id=$(pidof syllable_lab)
 
-wait $phone_lab_id $syllable_lab_id
+####wait $phone_lab_id $syllable_lab_id
 
-cd ../phone_level_lab/
-pkill phone_lab
-cd ../syllable_level_lab/
-pkill syllable_lab
+####cd ../phone_level_lab/
+####pkill phone_lab
+####cd ../syllable_level_lab/
+####pkill syllable_lab
 
 
 sed -e '1,2d' syldict > syldict1
